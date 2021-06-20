@@ -39,12 +39,12 @@ public class Validator {
         try {
             int age = Integer.parseInt(txt.getText());
             if (age < 16 || age > 55) {
-                sb.append("Tuổi phải trong khoảng 16-55\n");
+                sb.append("Age must be in range 16-55\n");
                 txt.setBackground(Color.yellow);
                 ok = false;
             }
         } catch (NumberFormatException e) {
-            sb.append("Tuổi phải là một số tự nhiên\n");
+            sb.append("Age must be an integer number\n");
             txt.setBackground(Color.yellow);
             ok = false;
         }
@@ -62,12 +62,12 @@ public class Validator {
         try {
             double salary = Double.parseDouble(txt.getText());
             if (salary < 5000000) {
-                sb.append("Lương phải lớn hơn 5.000.000\n");
+                sb.append("Salary must be more than 5.000.000\n");
                 txt.setBackground(Color.yellow);
                 ok = false;
             }
         } catch (NumberFormatException e) {
-            sb.append("Lương phải là một số thực\n");
+            sb.append("Salary must be a real number\n");
             txt.setBackground(Color.yellow);
             ok = false;
         }
@@ -87,7 +87,7 @@ public class Validator {
         Matcher m = p.matcher(txt.getText());
         
         if (!m.find()) {
-            sb.append("Email không hợp lệ\n");
+            sb.append("Email is not valid\n");
             txt.setBackground(Color.yellow);
             ok = false;
         }
