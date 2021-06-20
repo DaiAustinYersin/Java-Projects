@@ -103,8 +103,8 @@ public final class JFrame_EmployeeManagement extends javax.swing.JFrame {
 
     void save() {
         StringBuilder sb = new StringBuilder();
-        Validator.checkNull(txt_employeeID, "Mã nhân viên chưa nhập", sb);
-        Validator.checkNull(txt_fullName, "Họ tên chưa nhập", sb);
+        Validator.checkNull(txt_employeeID, "Employee ID cannot be null", sb);
+        Validator.checkNull(txt_fullName, "Fullname cannot be null", sb);
         Validator.checkAge(txt_age, sb);
         if (!txt_email.getText().isEmpty()) {
             Validator.checkEmail(txt_email, sb);
@@ -128,7 +128,7 @@ public final class JFrame_EmployeeManagement extends javax.swing.JFrame {
         nv.setAssess(txtarea_assess.getText());
 
         if (index == -1) {
-            if (checkTrung(txt_employeeID, "Trùng mã của nhân viên ")) {
+            if (checkTrung(txt_employeeID, "EmployeeID has already existed")) {
                 return;
             }
             list.add(nv);
