@@ -18,28 +18,27 @@ public class CalculatorForm extends javax.swing.JFrame {
     /**
      * Creates new form CalculatorForm
      */
-    
     double so1;
     double so2;
     String cong = " + ";
     String tru = " - ";
     String nhan = " * ";
     String chia = " / ";
-    
+
     public CalculatorForm() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
         runTitle();
     }
-    
-    private void runTitle(){
-        Thread t = new Thread(){
+
+    private void runTitle() {
+        Thread t = new Thread() {
             @Override
             public void run() {
                 int i = 0;
                 String text = lbl_title.getText();
-                while (true) {                    
+                while (true) {
                     String c1 = text.substring(i, i + 1);
                     String c2 = text.substring(i, text.length());
                     text += c1;
@@ -55,8 +54,8 @@ public class CalculatorForm extends javax.swing.JFrame {
         };
         t.start();
     }
-    
-    private boolean checkNull(){
+
+    private boolean checkNull() {
         if (txt.getText().isEmpty()) {
             txt.setBackground(Color.yellow);
             showMes();
@@ -66,22 +65,21 @@ public class CalculatorForm extends javax.swing.JFrame {
         txt.setBackground(Color.white);
         return false;
     }
-    
-    private void showMes(){
+
+    private void showMes() {
         JOptionPane.showMessageDialog(this, "Please input your calculation");
     }
-    
-    private void getButtonText(JButton btn){
+
+    private void getButtonText(JButton btn) {
         String text = txt.getText();
         text += btn.getText();
         txt.setText(text);
     }
-    
+
     private void record(JButton btn) {
         if (txt.getText().length() < 5) {
             return;
         }
-        lbl_record.setText(lbl_record.getText() + btn.getText());
     }
 
     /**
@@ -118,7 +116,6 @@ public class CalculatorForm extends javax.swing.JFrame {
         btn_thapphan = new javax.swing.JButton();
         btn_kq = new javax.swing.JButton();
         btn_reset = new javax.swing.JButton();
-        lbl_record = new javax.swing.JLabel();
 
         jButton9.setText("jButton9");
 
@@ -324,9 +321,6 @@ public class CalculatorForm extends javax.swing.JFrame {
             }
         });
 
-        lbl_record.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_record.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -335,11 +329,7 @@ public class CalculatorForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lbl_record, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbl_title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -351,9 +341,7 @@ public class CalculatorForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_record, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -368,7 +356,6 @@ public class CalculatorForm extends javax.swing.JFrame {
     private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
         try {
             txt.setText("");
-            lbl_record.setText("");
             txt.requestFocus();
         } catch (Exception e) {
         }
@@ -404,7 +391,7 @@ public class CalculatorForm extends javax.swing.JFrame {
                 return;
             }
             so1 = Double.parseDouble(txt.getText());
-            txt.setText(Math.sqrt(so1)+"");
+            txt.setText(Math.sqrt(so1) + "");
         } catch (Exception e) {
             showMes();
         }
@@ -514,16 +501,14 @@ public class CalculatorForm extends javax.swing.JFrame {
                 return;
             }
             if (txt.getText().contains(tru)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
             if (txt.getText().contains(nhan)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
             if (txt.getText().contains(chia)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
-            lbl_record.setText("");
-            lbl_record.setText(cong);
             txt.setText(txt.getText() + cong);
         } catch (Exception e) {
             showMes();
@@ -539,16 +524,14 @@ public class CalculatorForm extends javax.swing.JFrame {
                 return;
             }
             if (txt.getText().contains(cong)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
             if (txt.getText().contains(nhan)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
             if (txt.getText().contains(chia)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
-            lbl_record.setText("");
-            lbl_record.setText(tru);
             txt.setText(txt.getText() + tru);
         } catch (Exception e) {
         }
@@ -563,16 +546,14 @@ public class CalculatorForm extends javax.swing.JFrame {
                 return;
             }
             if (txt.getText().contains(cong)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
             if (txt.getText().contains(tru)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
             if (txt.getText().contains(chia)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
-            lbl_record.setText("");
-            lbl_record.setText(nhan);
             txt.setText(txt.getText() + nhan);
         } catch (Exception e) {
         }
@@ -587,16 +568,14 @@ public class CalculatorForm extends javax.swing.JFrame {
                 return;
             }
             if (txt.getText().contains(tru)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
             if (txt.getText().contains(nhan)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
             if (txt.getText().contains(cong)) {
-                txt.setText(txt.getText().substring(0,txt.getText().length() - 3));
+                txt.setText(txt.getText().substring(0, txt.getText().length() - 3));
             }
-            lbl_record.setText("");
-            lbl_record.setText(chia);
             txt.setText(txt.getText() + chia);
         } catch (Exception e) {
         }
@@ -606,9 +585,6 @@ public class CalculatorForm extends javax.swing.JFrame {
         try {
             if (checkNull()) {
                 return;
-            }
-            if (lbl_record.getText().length() > 3) {
-                txt.setText(txt.getText() + " " + lbl_record.getText());
             }
             int vtd = txt.getText().indexOf(" ");
             int vtc = txt.getText().lastIndexOf(" ");
@@ -632,11 +608,14 @@ public class CalculatorForm extends javax.swing.JFrame {
 
     private void btn_thapphanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thapphanActionPerformed
         try {
+            if (txt.getText().endsWith(" ")) {
+                txt.setText(txt.getText().concat("0."));
+            }
             if (txt.getText().isEmpty()) {
                 txt.setText("0.");
                 return;
             }
-            if (txt.getText().contains(cong) || txt.getText().contains(tru) || txt.getText().contains(nhan) || txt.getText().contains(chia)) {
+            if (txt.getText().length() > 5 && !txt.getText().endsWith(".") &&(txt.getText().contains(cong) || txt.getText().contains(tru) || txt.getText().contains(nhan) || txt.getText().contains(chia))) {
                 txt.setText(txt.getText() + ".");
             }
             if (txt.getText().contains(".")) {
@@ -674,6 +653,8 @@ public class CalculatorForm extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
@@ -705,7 +686,6 @@ public class CalculatorForm extends javax.swing.JFrame {
     private javax.swing.JButton btn_x2;
     private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lbl_record;
     private javax.swing.JLabel lbl_title;
     private javax.swing.JTextField txt;
     // End of variables declaration//GEN-END:variables
